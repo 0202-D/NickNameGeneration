@@ -11,8 +11,7 @@ public class Main {
         AtomicInteger atomicIntegerLength4 = new AtomicInteger();
         AtomicInteger atomicIntegerLength5 = new AtomicInteger();
         PrettyChecker checker = new PrettyChecker();
-        String[] checked = NickNameSelection.generateArrayNickNames(30, "abc");
-        System.out.println(Arrays.toString(checked));
+        String[] checked = NickNameSelection.generateArrayNickNames(100000, "abc");
         Thread findPalindrome = new Thread(() -> {
             for (String nick : checked) {
                 if (nick.length() == 3 && checker.isPalindrome(nick) && !checker.isOneLetter(nick)) {
