@@ -11,42 +11,43 @@ public class Main {
         AtomicInteger atomicIntegerLength4 = new AtomicInteger();
         AtomicInteger atomicIntegerLength5 = new AtomicInteger();
         PrettyChecker checker = new PrettyChecker();
-        String[] checked = NickNameSelection.generateArrayNickNames(100000, "abc");
+        String[] checked = NickNameSelection.generateArrayNickNames(30, "abc");
+        System.out.println(Arrays.toString(checked));
         Thread findPalindrome = new Thread(() -> {
             for (String nick : checked) {
-                if (checker.isPalindrome(nick) && nick.length() == 3) {
+                if (nick.length() == 3 && checker.isPalindrome(nick) && !checker.isOneLetter(nick)) {
                     atomicIntegerLength3.incrementAndGet();
                 }
-                if (checker.isPalindrome(nick) && nick.length() == 4) {
+                if (nick.length() == 4 && checker.isPalindrome(nick) && !checker.isOneLetter(nick)) {
                     atomicIntegerLength4.incrementAndGet();
                 }
-                if (checker.isPalindrome(nick) && nick.length() == 5) {
+                if (nick.length() == 5 && checker.isPalindrome(nick) && !checker.isOneLetter(nick)) {
                     atomicIntegerLength5.incrementAndGet();
                 }
             }
         });
         Thread findOneLetterNick = new Thread(() -> {
             for (String nick : checked) {
-                if (checker.isOneLetter(nick) && nick.length() == 3) {
+                if (nick.length() == 3 && checker.isOneLetter(nick)) {
                     atomicIntegerLength3.incrementAndGet();
                 }
-                if (checker.isOneLetter(nick) && nick.length() == 4) {
+                if (nick.length() == 4 && checker.isOneLetter(nick)) {
                     atomicIntegerLength4.incrementAndGet();
                 }
-                if (checker.isOneLetter(nick) && nick.length() == 5) {
+                if (nick.length() == 5 && checker.isOneLetter(nick)) {
                     atomicIntegerLength5.incrementAndGet();
                 }
             }
         });
         Thread findSortedNick = new Thread(() -> {
             for (String nick : checked) {
-                if (checker.isSortedNick(nick) && nick.length() == 3) {
+                if (nick.length() == 3 && checker.isSortedNick(nick) && !checker.isOneLetter(nick)) {
                     atomicIntegerLength3.incrementAndGet();
                 }
-                if (checker.isSortedNick(nick) && nick.length() == 4) {
+                if (nick.length() == 4 && checker.isSortedNick(nick) && !checker.isOneLetter(nick)) {
                     atomicIntegerLength4.incrementAndGet();
                 }
-                if (checker.isSortedNick(nick) && nick.length() == 5) {
+                if (nick.length() == 5 && checker.isSortedNick(nick) && !checker.isOneLetter(nick)) {
                     atomicIntegerLength5.incrementAndGet();
                 }
             }

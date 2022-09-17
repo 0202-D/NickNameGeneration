@@ -23,7 +23,8 @@ public class PrettyCheckerTest {
     public static Stream<Arguments> source() {
         return Stream.of(Arguments.of("aba", true),
                 Arguments.of("abd", false),
-                Arguments.of("abaaba", true));
+                Arguments.of("abaaba", true),
+                Arguments.of("baacb", false));
     }
     @ParameterizedTest()
     @MethodSource("source2")
@@ -35,7 +36,9 @@ public class PrettyCheckerTest {
     public static Stream<Arguments> source2() {
         return Stream.of(Arguments.of("aaa", true),
                 Arguments.of("abd", false),
-                Arguments.of("abaaba", false));
+                Arguments.of("abaaba", false),
+                Arguments.of("acb", false),
+                Arguments.of("baacb", false));
     }
     @ParameterizedTest()
     @MethodSource("source3")
@@ -47,6 +50,7 @@ public class PrettyCheckerTest {
     public static Stream<Arguments> source3() {
         return Stream.of(Arguments.of("aaa", true),
                 Arguments.of("dac",false),
-                Arguments.of("kmzzzz", true));
+                Arguments.of("kmzzzz", true),
+                Arguments.of("baacb", false));
     }
 }
